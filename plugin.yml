@@ -1,0 +1,11 @@
+name: ItemGenerator
+version: 0.1.5
+main: me.BartVV.Generator.Generator
+author: Bart // NormaalBart
+depend: [Vault]
+softdepend: [ASkyBlock]
+commands:
+  generator:
+    aliases: [gen, generators]
+  giveGen:
+    description: Console only command

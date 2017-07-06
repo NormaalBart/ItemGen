@@ -1,0 +1,42 @@
+#########################
+#                       #
+#     ItemGenerator     #
+#        v0.1.5         #
+#                       #
+#########################
+# This plugin is made for 'tomsterbom'
+# If you get this plugin you may not sell it or give it to other people
+# Without my permission (NormaalBart)
+#
+#
+# Permissions for the plugin:
+#   ItemGen.get:
+#      Get an item generator
+#   ItemGen.place:
+#      Place an item generator
+#   ItemGen.break:
+#      Break an item generator
+#
+
+## What for format shoudld it get above the chest?
+format: "&aLevel {LEVEL} {ORE} generator!"
+## What should be the name of the generator when giving the item to place?
+generatorName: "&a{ore} Generator"
+## What message do you get when there is a generator made?
+generatorMade: "&aGenerator is succesfully made!"
+## When you delete a generator.
+generatorDelete: "&cGenerator is deleted!"
+## When you typed something wrong
+wrongUsage: "&cWrong usage: &a/generator (Material) (Time) (Amount)"
+## When the material isn't found
+noMaterial: "&cMaterial isn't found!"
+## When you did the command succesfull
+generatorGive: "&aYou got a generator in your inventory!"
+## When a generator got upgraded
+generatorUpgrade: "&aThe generator is upgraded to level {LEVEL}"
+## When you don't have enough money to upgrade
+noMoney: "&cYou don't have enough money to do it!"
+## When the highest level is reached
+cantLevel: "&cHighest level reached!"
+## When you don't have the right permission to do it.
+noPermission: "&cYou don't have the permissions to do that!"

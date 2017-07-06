@@ -1,0 +1,187 @@
+# You can change everything you want
+# You can also add an other list for materials
+# Just copy it and paste it elsewhere
+# NOTE: the before the : at the beginning
+# It has to be a normal material
+# All the materials you can find here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+# Also the get: has to be a material what you can find again here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+# END OF DOCUMENTATION
+
+Prices:
+  coal_ore:
+    ## What do you get?
+    get: coal
+    ## How much do you get?
+    Amount: 5
+    ## Prices to upgrade:
+    prices:
+      '1': 
+        interval: 10
+        price: 100.0
+      '2':
+        interval: 7
+        price: 200.0
+      '3':
+        interval: 5
+        price: 300.0
+      '4':
+        interval: 3
+        price: 400.0
+      '5':
+        interval: 1
+        price: 500.0
+  iron_ore:
+    ## What do you get?
+    get: iron_ingot
+    ## How much do you get?
+    Amount: 1
+    ## Prices to upgrade:
+    prices:
+      '1': 
+        interval: 10
+        price: 100.0
+      '2':
+        interval: 7
+        price: 200.0
+      '3':
+        interval: 5
+        price: 300.0
+      '4':
+        interval: 3
+        price: 400.0
+      '5':
+        interval: 1
+        price: 500.0
+  redstone_ore:
+    ## What do you get?
+    get: redstone
+    ## How much do you get?
+    Amount: 10
+    ## Prices to upgrade:
+    prices:
+      '1': 
+        interval: 10
+        price: 100.0
+      '2':
+        interval: 7
+        price: 200.0
+      '3':
+        interval: 5
+        price: 300.0
+      '4':
+        interval: 3
+        price: 400.0
+      '5':
+        interval: 1
+        price: 500.0
+  lapis_lapzuli:
+    ## What do you get?
+    get: lapis
+    ## How much do you get?
+    Amount: 7
+    ## Prices to upgrade:
+    prices:
+      '1': 
+        interval: 10
+        price: 100.0
+      '2':
+        interval: 7
+        price: 200.0
+      '3':
+        interval: 5
+        price: 300.0
+      '4':
+        interval: 3
+        price: 400.0
+      '5':
+        interval: 1
+        price: 500.0
+  gold_ore:
+    ## What do you get?
+    get: gold_ingot
+    ## How much do you get?
+    Amount: 3
+    ## Prices to upgrade:
+    prices:
+      '1': 
+        interval: 10
+        price: 100.0
+      '2':
+        interval: 7
+        price: 200.0
+      '3':
+        interval: 5
+        price: 300.0
+      '4':
+        interval: 3
+        price: 400.0
+      '5':
+        interval: 1
+        price: 500.0
+  diamond_ore:
+    ## What do you get?
+    get: diamond
+    ## How much do you get?
+    Amount: 1
+    ## Prices to upgrade:
+    prices:
+      '1': 
+        interval: 10
+        price: 100.0
+      '2':
+        interval: 7
+        price: 200.0
+      '3':
+        interval: 5
+        price: 300.0
+      '4':
+        interval: 3
+        price: 400.0
+      '5':
+        interval: 1
+        price: 500.0
+  emerald_ore:
+    ## What do you get?
+    get: emerald
+    ## How much do you get?
+    Amount: 1
+    ## Prices to upgrade:
+    prices:
+      '1': 
+        interval: 10
+        price: 100.0
+      '2':
+        interval: 7
+        price: 200.0
+      '3':
+        interval: 5
+        price: 300.0
+      '4':
+        interval: 3
+        price: 400.0
+      '5':
+        interval: 1
+        price: 500.0
+  quartz_ore:
+    ## What do you get?
+    get: quartz
+    ## How much do you get?
+    Amount: 1
+    ## Prices to upgrade:
+    prices:
+      '1': 
+        interval: 10
+        price: 100.0
+      '2':
+        interval: 7
+        price: 200.0
+      '3':
+        interval: 5
+        price: 300.0
+      '4':
+        interval: 3
+        price: 400.0
+      '5':
+        interval: 1
+        price: 500.0
+    
