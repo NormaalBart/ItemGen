@@ -18,6 +18,7 @@ import com.google.common.util.concurrent.AtomicDouble;
 import me.BartVV.Generator.Commands.CMDHandler;
 import me.BartVV.Generator.Listener.BlockBreak;
 import me.BartVV.Generator.Listener.BlockPlace;
+import me.BartVV.Generator.Listener.ChunkManager;
 import me.BartVV.Generator.Listener.ClickEvent;
 import me.BartVV.Generator.Listener.InteractEvent;
 import me.BartVV.Generator.Listener.ListOfOres;
@@ -25,12 +26,15 @@ import net.milkbowl.vault.economy.Economy;
 
 public class Generator extends JavaPlugin{
 	
+	public static Integer taskid;
     public static Economy economy = null;
+    public static Generator inst;
 	
 	@Override
 	public void onEnable() {
 		Long begin = System.currentTimeMillis();
-		
+		inst = this;
+		Manager.gen = this;
 		Config.generateFile(this, "prices.yml");
 		Config.generateFile(this, "messages.yml");
 		Config.generateFile(this, "data.yml");
@@ -64,6 +68,7 @@ public class Generator extends JavaPlugin{
 		new ClickEvent(this);
 		new CMDHandler(this);
 		new InteractEvent(this);
+		new ChunkManager(this);
 		
 		begin = System.currentTimeMillis() - begin;
 		log(Level.INFO, "====================");
@@ -106,8 +111,8 @@ public class Generator extends JavaPlugin{
 		getLogger().log(l, msg);
 	}
 	
-	private void start(AtomicDouble ad){
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable(){
+	public void start(AtomicDouble ad){
+		taskid = Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable(){
 			@Override
 			public void run() {
 				if(!Manager.getGens().isEmpty()){

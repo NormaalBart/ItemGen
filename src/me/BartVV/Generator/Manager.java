@@ -23,7 +23,7 @@ import me.BartVV.Generator.Listener.ListOfOres;
 public class Manager extends Config {
 
 	private static Set<Manager> gens = new HashSet<>();
-
+	public static Generator gen;
 	private Location loc;
 	private Double time;
 	private ItemStack is;
@@ -35,36 +35,11 @@ public class Manager extends Config {
 		this.from = mat;
 		this.loc = new Location(loc.getWorld(), loc.getX(), loc.getY(), loc.getZ());
 		this.is = ListOfOres.getOre(mat).getItemStack();
-		String type = is.getType().toString().toLowerCase().replace("_", " ");
-		if(type.contains("ink sack")){
-			type = "Lapis";
-		}
-		type = type.substring(0,1).toUpperCase() + type.substring(1, type.length()).toLowerCase();
-		for(Entity e : this.loc.getWorld().getNearbyEntities(loc, 0.5, 0.5, 0.5)){
-			if(e instanceof ArmorStand){
-				ArmorStand as = (ArmorStand) e;
-				if(as.getCustomName().equalsIgnoreCase(format.replace("{LEVEL}", "" + level).replace("{ORE}", type))){
-					this.armorStand = as;
-				}
-			}
-		}
-		if(armorStand == null){
-			this.armorStand = (ArmorStand) loc.getWorld().spawnEntity(
-					new Location(loc.getWorld(), loc.getBlockX()+.5, loc.getBlockY(), loc.getBlockZ()+0.5),
-					EntityType.ARMOR_STAND);	
-		}
-		this.armorStand.setVisible(false);
-		this.armorStand.setGravity(false);
-		this.armorStand.setCustomNameVisible(true);
+
 		this.level = level;
 		this.time = ListOfOres.getOre(mat).getTime().get(level);
 		
-		this.armorStand.setCustomName(
-				format.replace("{LEVEL}", "" + this.level).replace("{ORE}", type));
-		try {
-			this.armorStand.setCollidable(false);
-		} catch (NoSuchMethodError e) {
-		}
+		this.loadArmorStand();
 		gens.add(this);
 	}
 
@@ -120,6 +95,7 @@ public class Manager extends Config {
 	 * Removes the generator
 	 */
 	public void delete() {
+		Bukkit.getEntity(armorStand.getUniqueId()).remove();
 		armorStand.remove();
 		armorStand.eject();
 		gens.remove(this);
@@ -260,5 +236,59 @@ public class Manager extends Config {
 			this.armorStand.setCustomName(
 					format.replace("{LEVEL}", "" + this.level).replace("{ORE}", type));
 		}
+	}
+
+	public static void clear() {
+		gens.clear();
+	}
+
+	public void loadArmorStand() {
+		String type = is.getType().toString().toLowerCase().replace("_", " ");
+		if(type.contains("ink sack")){
+			type = "Lapis";
+		}
+		type = type.substring(0,1).toUpperCase() + type.substring(1, type.length()).toLowerCase();
+		
+		for(Entity entity : loc.getWorld().getNearbyEntities(loc, 0.5, 2, 0.5)){
+			if(entity instanceof ArmorStand){
+				ArmorStand as = (ArmorStand)entity;
+				if(as.getCustomName() != null){
+					this.armorStand = as;
+					
+					if(!this.armorStand.isSmall()){
+						this.deleteArmorStand();
+					}
+				}
+			}
+		}
+		
+		if(armorStand == null){
+			this.armorStand = (ArmorStand) loc.getWorld().spawnEntity(
+					new Location(loc.getWorld(), loc.getBlockX()+.5, loc.getBlockY()+1, loc.getBlockZ()+0.5),
+					EntityType.ARMOR_STAND);	
+		}
+		
+		this.armorStand.setSmall(true);
+		this.armorStand.setVisible(false);
+		this.armorStand.setGravity(false);
+		this.armorStand.setCustomNameVisible(true);
+		this.armorStand.setCustomName(
+				format.replace("{LEVEL}", "" + this.level).replace("{ORE}", type));
+		try {
+			this.armorStand.setCollidable(false);
+		} catch (NoSuchMethodError e) {}
+		
+	}
+	public void deleteArmorStand() {
+		try{
+			Bukkit.getEntity(armorStand.getUniqueId()).remove();
+		}catch(Exception e){}
+		try{
+			this.armorStand.eject();
+		}catch(Exception e){}
+		try{
+			this.armorStand.remove();
+		}catch(Exception e){}
+		this.armorStand = null;
 	}
 }
